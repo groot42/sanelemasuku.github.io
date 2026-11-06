@@ -1,42 +1,264 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sanele Masuku - systems administrator and MSP engineer in Johannesburg, open to remote roles.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Sanele Masuku</title>
-</head>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineer's spec sheet. Narrow reading column, case records laid out like change/incident tickets, a to-scale career timeline as the signature element. */
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --ink:#13202D; --muted:#5A6878; --line:#D5DCE3;
+  --accent:#C8551F; --accent-soft:#F6E3D9; --ok:#2F7D5B;
+  --seg1:#3E6B8A; --seg2:#5C8FA8; --seg3:#C8551F; --seg4:#8A6FB0; --seg5:#2F7D5B;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F161D; --surface:#16202A; --ink:#E6ECF1; --muted:#97A5B3; --line:#283542;
+  --accent:#F08A55; --accent-soft:#3A2418; --ok:#5DBB8E;
+  --seg1:#5E8CAD; --seg2:#7FB0C7; --seg3:#F08A55; --seg4:#A98ED0; --seg5:#5DBB8E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F161D; --surface:#16202A; --ink:#E6ECF1; --muted:#97A5B3; --line:#283542;
+  --accent:#F08A55; --accent-soft:#3A2418; --ok:#5DBB8E;
+  --seg1:#5E8CAD; --seg2:#7FB0C7; --seg3:#F08A55; --seg4:#A98ED0; --seg5:#5DBB8E; color-scheme:dark}
 
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:48px 64px;display:grid;gap:56px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+p{margin:0}
+
+/* Hero */
+.hero{display:grid;gap:20px}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--mono);color:var(--ok)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+h1{font-size:clamp(48px,9vw,84px);text-transform:uppercase;letter-spacing:.01em}
+.role{font:600 clamp(18px,2.6vw,22px)/1.35 var(--body);color:var(--ink);max-width:40ch}
+.lede{color:var(--muted);max-width:62ch}
+.contact{display:flex;flex-wrap:wrap;gap:10px 22px;font:14px var(--mono)}
+.contact span{color:var(--muted)}
+.copy{font:500 12px var(--mono);border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  padding:3px 8px;border-radius:4px;cursor:pointer;margin-left:6px}
+.copy:hover{border-color:var(--accent)}
+
+/* Facts strip */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact{padding:16px 12px 16px 0;display:grid;gap:2px}
+.fact b{font:700 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.fact span{font-size:13px;color:var(--muted);line-height:1.35}
+
+/* Timeline */
+section{display:grid;gap:20px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h2{font-size:32px;text-transform:uppercase;letter-spacing:.02em}
+.tl{display:grid;gap:10px}
+.bar{position:relative;display:flex;height:34px;border-radius:4px;overflow:hidden}
+.bar div{height:100%}
+.ticks{display:flex;justify-content:space-between;font:12px var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 24px;margin-top:6px}
+.legend div{display:grid;grid-template-columns:12px 1fr;gap:4px 10px;align-items:start}
+.legend i{width:12px;height:12px;border-radius:2px;margin-top:6px}
+.legend strong{font-weight:600}
+.legend small{grid-column:2;color:var(--muted);font:12px var(--mono)}
+
+/* Case records */
+.cases{display:grid;gap:18px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px 22px 20px;display:grid;gap:14px}
+.case-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.case h3{font-size:26px;letter-spacing:.01em}
+.tag{font:500 12px var(--mono);color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:3px;white-space:nowrap}
+.rec{display:grid;grid-template-columns:110px 1fr;gap:6px 18px;font-size:15px}
+.rec dt{font:500 12px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.rec dd{margin:0;min-width:0}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font:12px var(--mono);border:1px solid var(--line);padding:1px 7px;border-radius:3px;color:var(--ink)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:20px 32px}
+.skills div{display:grid;gap:4px;min-width:0}
+.skills p{font-size:15px}
+
+/* Certs + setup */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+ul.plain{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px}
+ul.plain li{display:grid;grid-template-columns:auto 1fr;gap:10px}
+ul.plain li::before{content:"";width:6px;height:6px;margin-top:9px;background:var(--accent);border-radius:1px}
+.pill{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border:1px solid var(--line);padding:0 6px;border-radius:3px;margin-left:6px;white-space:nowrap}
+
+footer{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font:13px var(--mono)}
+
+@media (max-width:680px){
+  .facts{grid-template-columns:repeat(2,1fr)}
+  .rec{grid-template-columns:1fr;gap:2px}
+  .rec dd{margin-bottom:8px}
+  .skills,.two{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bar div{transform-origin:left;animation:grow .7s ease-out both}
+  @keyframes grow{from{transform:scaleX(.6)}to{transform:scaleX(1)}}
+}
+</style>
+</head>
 <body>
 
-<h1>Sanele Masuku</h1>
 
-<h2>Systems Administrator | IT Support Engineer | Cybersecurity</h2>
+<div class="wrap">
 
-<p>
-Experienced IT Professional with 7+ years experience in systems administration,
-networking, cybersecurity and Microsoft 365 administration.
-</p>
+<header class="hero">
+  <span class="status">Open to remote roles · SA, UK and US hours</span>
+  <h1>Sanele Masuku</h1>
+  <p class="role">Systems administrator and MSP engineer. Microsoft 365, networks, servers and security.</p>
+  <p class="lede">I've spent 8+ years keeping production environments running, from 4K/8K post-production studios to multi-client managed service desks. I build networks and storage from scratch, recover from incidents without losing data, and write the tooling that makes repeat work safe. Based in Johannesburg, working remotely.</p>
+  <div class="contact">
+    <div><span>Email</span> sanelemasuku69@gmail.com<button class="copy" id="copy-email" type="button" data-copy="sanelemasuku69@gmail.com">Copy</button></div>
+    <div><span>LinkedIn</span> <a href="https://www.linkedin.com/in/sanele-masuku-086a19214" target="_blank" rel="noopener">sanele-masuku-086a19214</a></div>
+  </div>
+</header>
 
-<h2>Skills</h2>
+<div class="facts" role="list">
+  <div class="fact" role="listitem"><b>8+</b><span>years in IT support and systems administration</span></div>
+  <div class="fact" role="listitem"><b>500TB+</b><span>production RAID storage administered</span></div>
+  <div class="fact" role="listitem"><b>0</b><span>files lost in a live ransomware incident</span></div>
+  <div class="fact" role="listitem"><b>~6,000</b><span>participant records reconciled by a tool I built</span></div>
+</div>
 
-<ul>
-<li>Windows Server</li>
-<li>Linux</li>
-<li>Microsoft 365</li>
-<li>Networking</li>
-<li>Cybersecurity</li>
-<li>Virtualization</li>
-<li>PowerShell</li>
-</ul>
+<section aria-labelledby="t-career">
+  <div class="sec-head"><h2 id="t-career">Career</h2><span class="label">Nov 2017 – present, to scale</span></div>
+  <div class="tl">
+    <div class="bar" aria-hidden="true">
+      <div style="flex:47;background:var(--seg1)"></div>
+      <div style="flex:37;background:var(--seg2)"></div>
+      <div style="flex:12;background:var(--seg3)"></div>
+      <div style="flex:13;background:var(--seg5)"></div>
+    </div>
+    <div class="ticks" aria-hidden="true"><span>2017</span><span>2019</span><span>2021</span><span>2023</span><span>2025</span><span>2026</span></div>
+    <div class="legend">
+      <div><i style="background:var(--seg1)"></i><strong>Bladeworks Post Production</strong><small>IT Technician / Systems Admin · 2017–2021 · 70+ users</small></div>
+      <div><i style="background:var(--seg2)"></i><strong>Yellowbone Entertainment</strong><small>IT Administrator · 2021–2024 · sole IT for 30+ staff</small></div>
+      <div><i style="background:var(--seg3)"></i><strong>LAN Logix (MSP)</strong><small>IT Engineer / MSP Support · 2024–2025</small></div>
+      <div><i style="background:var(--seg5)"></i><strong>Independent consulting</strong><small>2025–present · incl. SchoolNet SA contract, 2026</small></div>
+    </div>
+  </div>
+</section>
 
-<h2>Projects</h2>
+<section aria-labelledby="t-work">
+  <div class="sec-head"><h2 id="t-work">Selected work</h2><span class="label">Problem · what I did · outcome</span></div>
+  <div class="cases">
 
-<h3>10GbE Network Infrastructure</h3>
-<p>Designed and implemented a complete 10GbE network for 70+ users.</p>
+    <article class="case">
+      <div class="case-top"><h3>Live ransomware containment</h3><span class="tag">Incident response</span></div>
+      <dl class="rec">
+        <dt>Where</dt><dd>Bladeworks Post Production, a 70+ user studio running 4K/8K workflows</dd>
+        <dt>Problem</dt><dd>Ransomware began encrypting shares during a working day.</dd>
+        <dt>What I did</dt><dd>Isolated affected endpoints and storage, stopped the spread, restored from clean backups, then hardened endpoint and network controls so the same path couldn't be used again.</dd>
+        <dt>Outcome</dt><dd>Zero data loss and production back online.</dd>
+        <dt>Stack</dt><dd class="stack"><span>Active Directory</span><span>Backups</span><span>Endpoint hardening</span><span>Network segmentation</span></dd>
+      </dl>
+    </article>
 
-<h3>Ransomware Incident Response</h3>
-<p>Contained a live ransomware attack with zero data loss.</p>
+    <article class="case">
+      <div class="case-top"><h3>10GbE network and 500TB storage build</h3><span class="tag">Infrastructure</span></div>
+      <dl class="rec">
+        <dt>Where</dt><dd>Bladeworks and Yellowbone Entertainment</dd>
+        <dt>Problem</dt><dd>Editors needed to work on shared 4K/8K footage in real time without slow transfers or local copies.</dd>
+        <dt>What I did</dt><dd>Designed and built the network from scratch: 10GbE core switching, firewalls, structured cabling, Linux and Windows servers, and RAID storage tuned for throughput and redundancy.</dd>
+        <dt>Outcome</dt><dd>Real-time collaboration on shared storage across 500TB+, with backups and disaster recovery in place.</dd>
+        <dt>Stack</dt><dd class="stack"><span>Dell PowerConnect 10GbE</span><span>Synology</span><span>QNAP</span><span>Supermicro</span><span>Avid ISIS</span><span>Windows Server</span><span>Ubuntu</span></dd>
+      </dl>
+    </article>
 
-<h3>Home Cybersecurity Lab</h3>
-<p>Kali Linux, Metasploit, Active Directory, Wazuh and SIEM testing.</p>
+    <article class="case">
+      <div class="case-top"><h3>SchoolNet Audit Platform</h3><span class="tag">Tooling · data</span></div>
+      <dl class="rec">
+        <dt>Where</dt><dd>SchoolNet South Africa, teacher training programmes in KwaZulu-Natal and Mpumalanga</dd>
+        <dt>Problem</dt><dd>Attendance registers, Moodle course completions and certificates were checked by hand across many spreadsheets, so mistakes and missing certificates slipped through.</dd>
+        <dt>What I did</dt><dd>Built a Windows desktop app in Python and SQLite that imports the source files, reconciles identities, flags conflicts and sends unclear records to manual review. Originals are never overwritten and every change keeps an audit trail.</dd>
+        <dt>Outcome</dt><dd>Certificate operations for roughly 6,000 participant records across five KZN districts, with data handled in line with POPIA.</dd>
+        <dt>Stack</dt><dd class="stack"><span>Python</span><span>SQLite</span><span>Tkinter</span><span>Excel / Google Sheets</span><span>PowerShell</span></dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><h3>Multi-client MSP support</h3><span class="tag">Managed services</span></div>
+      <dl class="rec">
+        <dt>Where</dt><dd>LAN Logix, a Johannesburg managed service provider</dd>
+        <dt>Problem</dt><dd>Several business clients, each with different networks, tenants and backup setups, all on SLAs.</dd>
+        <dt>What I did</dt><dd>First- and second-line support on site and remotely: Microsoft 365 and Entra ID administration, firewall and VPN changes, WAN failover, Veeam repository recovery and full backup reruns, Windows 11 rollouts and an Autopilot/Intune pilot.</dd>
+        <dt>Outcome</dt><dd>Tickets resolved within SLA across clients, with recurring issues documented and standardised.</dd>
+        <dt>Stack</dt><dd class="stack"><span>Microsoft 365</span><span>Entra ID</span><span>Intune</span><span>FortiGate</span><span>MikroTik</span><span>UniFi</span><span>Veeam</span><span>Datto</span></dd>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><h3>Security monitoring and home lab</h3><span class="tag">Security</span></div>
+      <dl class="rec">
+        <dt>Where</dt><dd>Yellowbone Entertainment, and my own lab</dd>
+        <dt>What I did</dt><dd>Deployed Wazuh with Filebeat and Elasticsearch for log monitoring in production, and wrote PowerShell scripts that alert on suspicious logins and failed authentication. At home I run a Proxmox host, a TrueNAS storage build and a Kali Linux lab for web exploitation and privilege-escalation practice.</dd>
+        <dt>Stack</dt><dd class="stack"><span>Wazuh</span><span>Elasticsearch</span><span>PowerShell</span><span>Proxmox</span><span>TrueNAS</span><span>Kali Linux</span><span>Burp Suite</span><span>Nmap</span></dd>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<section aria-labelledby="t-skills">
+  <h2 id="t-skills">Skills</h2>
+  <div class="skills">
+    <div><span class="label">Microsoft 365 &amp; identity</span><p>Exchange Online, SharePoint, Teams, OneDrive, Intune, Autopilot, Entra ID, Active Directory, Group Policy, LAPS, Defender</p></div>
+    <div><span class="label">Networking</span><p>TCP/IP, DNS, DHCP, VLANs, IPSec/SSL VPN, WireGuard, routing and switching, 10GbE, FortiGate, MikroTik, UniFi</p></div>
+    <div><span class="label">Servers &amp; virtualisation</span><p>Windows Server 2012 R2–2019, Ubuntu, CentOS, Proxmox VE, VMware vSphere, Hyper-V</p></div>
+    <div><span class="label">Storage &amp; backup</span><p>Synology, QNAP, Supermicro, RAID, Veeam, Datto, disaster recovery and restore testing</p></div>
+    <div><span class="label">Security</span><p>Wazuh SIEM, IDS/IPS, phishing and malware response, Nessus, Nmap, Wireshark, Kali Linux</p></div>
+    <div><span class="label">Scripting &amp; tools</span><p>PowerShell, Bash, Python (SQLite, Tkinter), ConnectWise, Autotask, ServiceNow, Jira</p></div>
+  </div>
+</section>
+
+<section class="two" aria-label="Learning and remote setup">
+  <div style="display:grid;gap:16px">
+    <h2>Learning</h2>
+    <ul class="plain">
+      <li><span>CCNA <span class="pill">In progress</span></span></li>
+      <li><span>Microsoft MD-102 Endpoint Administrator <span class="pill">Preparing</span></span></li>
+      <li><span>Google IT Support Professional Certificate, 2022</span></li>
+      <li><span>TryHackMe: Jr Penetration Tester, CompTIA Pentest+ and cyber defence paths, 50+ rooms</span></li>
+      <li><span>CompTIA A+ training (Cybrary), network troubleshooting and wireless security courses</span></li>
+    </ul>
+  </div>
+  <div style="display:grid;gap:16px">
+    <h2>Remote setup</h2>
+    <ul class="plain">
+      <li><span>Reliable internet, my own equipment and backup power for load-shedding</span></li>
+      <li><span>Available for SA/UK daytime, US hours (3pm–midnight SAST) or night shift</span></li>
+      <li><span>English (professional) and isiZulu (native)</span></li>
+      <li><span>Available to start immediately</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer><span>Sanele Masuku · Johannesburg, South Africa</span><span>CV and references on request</span></footer>
+</div>
+
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.getAttribute('data-copy');
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+    try{navigator.clipboard.writeText(t).then(done,function(){sel()})}catch(e){sel()}
+    function sel(){var r=document.createRange();r.selectNodeContents(b.parentNode);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  });
+});
+</script>
 
 </body>
 </html>
